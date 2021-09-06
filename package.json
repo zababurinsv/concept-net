@@ -1,0 +1,57 @@
+{
+  "name": "concept-net",
+  "version": "0.4.0",
+  "description": "interface to the ConceptNet semantic network",
+  "main": "index.mjs",
+  "config": {
+    "name": "index",
+    "port": 9834
+  },
+  "scripts": {
+    "start": "npm-run-all -c clean:cache kill dev",
+    "kill": "npm-run-all -c -p kill:main",
+    "dev": "npm-run-all -c -p dev:main",
+    "build": "parcel build ./src/${npm_package_config_name}.mjs",
+    "kill:main": "kill $(lsof -t -i:${npm_package_config_port}):${npm_package_config_port}",
+    "dev:main": "parcel ${npm_package_config_name}.html --port ${npm_package_config_port}",
+    "clean:cache": "rimraf ./.parcel-cache",
+    "test": "./node_modules/.bin/mocha",
+    "test-cov": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coverage -- -R spec",
+    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coveralls/coverage --report lcovonly -- -R spec && cat ./reports/coveralls/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./reports/coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Planeshifter/concept-net.git"
+  },
+  "keywords": [
+    "ConceptNet",
+    "semantic-web",
+    "knowledge-base",
+    "semantic-network",
+    "RDF",
+    "DBpedia"
+  ],
+  "author": "Philipp Burckhardt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Planeshifter/node-concept-net/issues"
+  },
+  "homepage": "https://github.com/Planeshifter/node-concept-net",
+  "devDependencies": {
+    "@parcel/packager-raw-url": "2.0.0-rc.0",
+    "@parcel/resolver-default": "^2.0.0-alpha.3",
+    "@parcel/transformer-jsonld": "2.0.0-rc.0",
+    "chai": "latest",
+    "coveralls": "latest",
+    "istanbul": "latest",
+    "mocha": "latest",
+    "npm-run-all": "^4.1.5",
+    "parcel": "2.0.0-rc.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "validate.io-function": "^1.0.2",
+    "validate.io-object": "^1.0.4",
+    "validate.io-string-primitive": "^1.0.0"
+  }
+}
