@@ -1,8 +1,9 @@
 {
-  "name": "concept-net",
+  "name": "@orbit/net",
   "version": "0.4.0",
   "description": "interface to the ConceptNet semantic network",
-  "main": "index.mjs",
+  "main": "./lib/index.mjs",
+  "private": true,
   "config": {
     "name": "index",
     "port": 9834
@@ -21,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Planeshifter/concept-net.git"
+    "url": "https://github.com/zababurinsv/concept-net.git"
   },
   "keywords": [
     "ConceptNet",
@@ -34,9 +35,9 @@
   "author": "Philipp Burckhardt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Planeshifter/node-concept-net/issues"
+    "url": "https://github.com/zababurinsv/concept-net/issues"
   },
-  "homepage": "https://github.com/Planeshifter/node-concept-net",
+  "homepage": "https://github.com/zababurinsv/concept-net",
   "devDependencies": {
     "@parcel/packager-raw-url": "2.0.0-rc.0",
     "@parcel/resolver-default": "^2.0.0-alpha.3",

@@ -133,3 +133,6 @@ Run tests via the command `npm test`
 
 [dependencies-image]: http://img.shields.io/david/Planeshifter/node-concept-net.svg
 [dependencies-url]: https://david-dm.org/Planeshifter/node-concept-net
+
+
+[search](https://api.conceptnet.io/search?language=en&text=ground_beef)

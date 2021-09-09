@@ -7,4 +7,53 @@
 <body>
 <div> Concept </div>
 </body>
+<script type="module">
+	import ConceptNet from './lib/index.mjs'
+	import axios from 'axios'
+	let conceptNet = ConceptNet('https://api.conceptnet.io')
+
+		// https://www.conceptnet.io/c/en/toast
+	// fetch(`https://api.conceptnet.io/c/en/toast`).then(async (response)=>{
+	// 	let res = await response.json()
+	// 	console.log('sssss', res)
+	// })
+	// axios.get(`https://api.conceptnet.io/c/en/toast`)
+	// 	.then((result)=>{
+	//
+	// 		console.log('99999999999999',result.data)
+			// callback(null, result.data)
+	// })
+	conceptNet.lookup( '/c/en/toast', {
+		limit: 10,
+		offset: 0,
+		filter: 'core'
+	}, function onDone( err, result ) {
+
+		console.log('result',result)
+	})
+
+	conceptNet.getURI( 'ground beef', 'en', ( err, result ) => {
+		// insert code here
+		console.log('result',result)
+	})
+
+	conceptNet.query({
+		start: '/c/en/donut'
+	}, function onDone( err, result ) {
+		console.log('result',result)
+	})
+
+	conceptNet.related( '/c/en/hotdog', {
+		limit: 20,
+		filter: '/c/en'
+	}, function onDone(err, result){
+		console.log('result', result)
+	})
+
+	conceptNet.relatedness( 'node1=/c/en/tea_kettle&node2=/c/en/coffee_pot', {
+
+	}, function onDone(err, result){
+		console.log('result', result)
+	})
+</script>
 </html>
